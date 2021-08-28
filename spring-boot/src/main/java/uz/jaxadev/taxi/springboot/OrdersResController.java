@@ -34,6 +34,8 @@ public class OrdersResController {
 
     ) {
 
+        int id = 0;
+
         Order order = new Order(startPoint, endPoint, price);
 
         orders.add(order);
@@ -42,5 +44,17 @@ public class OrdersResController {
 
     }
 
+    @PostMapping("/deleteOrder")
+    public ArrayList<Order> deleteOrder(
+
+            @RequestParam(required = true)
+                    int id
+
+    ) {
+
+        orders.removeIf(order -> id == order.id);
+
+        return orders;
+    }
 
 }
